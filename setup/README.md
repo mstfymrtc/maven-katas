@@ -47,10 +47,10 @@ This step is necessary for this exercise, but typically, you won't need it
 
 When asked for values, use the following
 * groupId: com.codurance.maven
-* artifactId: example
+* artifactId: setup-example
 * 1.0-SNAPSHOT
 
-This should generate an `example` folder with the project, base code, tests and a pom file
+This should generate an `setup-example` folder with the project, base code, tests and a pom file
 
 
 Navigate to the project folder, open the `pom.xml` file and add the following content right before the `<dependencies>` tag
