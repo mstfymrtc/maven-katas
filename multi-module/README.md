@@ -160,3 +160,71 @@ Now, you should be able to run
 ./mvnw clean package 
 ```
 from the parent pom (`multi-module` folder)
+
+
+## Managing dependencies from a parent
+
+Now it is possible to manage dependencies in a more centralized way. In order to achieve that, we will make use of `dependencyManagement` and `dependencies` in the parent pom
+
+### Dependency Management
+
+Add the following snippet after the modules section and build again from the parent.
+Everything should work as expected
+
+```xml
+<dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.example.maven</groupId>
+        <artifactId>calculator-api</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.example.maven</groupId>
+        <artifactId>calculator</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.reflections</groupId>
+        <artifactId>reflections</artifactId>
+        <version>0.9.9-RC1</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+</dependencyManagement>
+```
+
+Now you can go to each of your modules and remove the `version` tag from each declared dependency. 
+The version will be provided by the parent 
+
+## Common dependencies
+Now it's possible to declare common dependencies in just one place, leaving place for cleaning and tidying up our modules
+
+In order to achieve this, we will try it by adding the following snippet into our parent pom right after the `</dependencyManagement>` tag
+
+```xml
+<dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
+With this in place, try to build again (everything should go OK!)
+
+Now, let's go to the `calculator-test` module's pom.xml and remove the junit dependency
+
+Try to build again, and everything should go fine
+
+# Implications
+
+With the latest steps, we were able to manage in a central place all the dependencies we want.
+In an more enterprisey environment, this can save you a lot of time
