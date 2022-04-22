@@ -109,3 +109,54 @@ Depending which calculator you've implemented test it with run a desired test. F
 ```bash
 mvnw test -Dtest=DoubleCalculatorTest
 ```
+
+## Going multi module
+Now that we've implemented the production code, you may have noticed how weird it was going back and forth between projects
+So here comes a Parent POM to rescue
+
+### Parent project generation
+Go back to the one of the project folder (for instance `calculator`) and run the following command
+
+```bash
+./mvnw -B archetype:generate -DgroupId=com.example.maven -DartifactId=multi-module -DarchetypeArtifactId=pom-root -DarchetypeGroupId=org.codehaus.mojo.archetypes -DoutputDirectory=../../
+
+```
+
+Now go back to the `multi-module` folder and you'll see a `pom.xml` file
+Enable the wrapper by running
+
+```bash
+mvn -N wrapper:wrapper -Dmaven=3.2.3
+```
+
+### Create relationship
+
+Open the `pom.xml` file and add the following after the `<name>multi-module</name>` tag
+
+```xml
+<modules>
+    <module>calculator-api</module>
+    <module>calculator</module>
+    <module>calculator-test</module>
+</modules>
+```
+
+And in each of the project's pom files add the following
+
+```xml
+<parent>
+  <artifactId>multi-module</artifactId>
+  <groupId>com.example.maven</groupId>
+  <version>1.0-SNAPSHOT</version>
+</parent>
+```
+
+Now, your parent pom controls the other artifacts as submodules, and each submodule is declared to extend from the given parent
+
+
+### Building from the parent pom
+Now, you should be able to run
+```bash
+./mvnw clean package 
+```
+from the parent pom (`multi-module` folder)
