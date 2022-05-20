@@ -20,11 +20,16 @@ Have maven installed locally at least, since some steps will be required before 
 ### Clone the project
 
 [CHANGE ME!!!!!!]
-Clone the project into the local workspace `git clone https://github.com/kubamarchwicki/maven-kata.git`
+Clone the project into the local workspace 
+
+```
+git clone https://github.com/kubamarchwicki/maven-kata.git
+```
 
 ### Install locally
 
 Install the `calculator-api` project locally by going inside the `calculator-api` folder and then execute
+
 ```bash
 mvnw clean install
 ```
