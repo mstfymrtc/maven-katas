@@ -61,7 +61,7 @@ This project can be easily imported to any IDE. In Eclipse just choose _Import_.
 
 In the generated project adjust the following:
 
-* set java `source` and `target` runtime to Java 7.0
+* set java `source` and `target` runtime to Java 8.0
 * change the default `junit` to latest available version (4.11 as of writing this document)
 * add `calculator-api` as a dependency in the generated project
 
