@@ -19,26 +19,27 @@ Have maven installed locally at least, since some steps will be required before 
 
 ### Clone the project
 
-[CHANGE ME!!!!!!]
 Clone the project into the local workspace 
 
 ```
-git clone https://github.com/kubamarchwicki/maven-kata.git
+git clone https://github.com/codurance/maven-katas.git
 ```
+
+Jump to `multi-module` folder inside `maven-katas`
 
 ### Install locally
 
 Install the `calculator-api` project locally by going inside the `calculator-api` folder and then execute
 
 ```bash
-mvnw clean install
+./mvnw clean install
 ```
 
 ### Create new project
 Assuming you're still under the the `calculator-api` folder, we will create a new project based on `maven-archetype-quickstart`
 
 ```bash
-mvnw archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DoutputDirectory=../
+./mvnw archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DoutputDirectory=../
 ```
 
 Use the following parameters:
@@ -55,7 +56,17 @@ Go to the newly generated `calculator` module and run
 mvn -N wrapper:wrapper -Dmaven=3.2.3
 ```
 
-This project can be easily imported to any IDE. In Eclipse just choose _Import_... > _Maven projects_ and choose _Existing Maven project_
+This project can be easily imported to any IDE. 
+
+* If you have installed the CLI tool of IntellliJ IDEA do 
+
+```
+idea .
+```
+
+* If not, simply use the File > Open... menu option from IDEA.
+
+* In Eclipse just choose _Import_... > _Maven projects_ and choose _Existing Maven project_
 
 ### Adjust new project
 
@@ -87,7 +98,7 @@ In the generated project adjust the following:
 </plugin>
 ```
 
-Java version can be set as `properties` as well
+Java version can be set as `properties` as well (recommended)
 
 .properties
 ```xml
@@ -101,7 +112,11 @@ Java version can be set as `properties` as well
 
 And don't forget the tests!
 
-Run the project with `mvnw clean package`
+Run the project with 
+
+```
+./mvnw clean package
+```
 
 ### Test the reference
 
@@ -112,7 +127,7 @@ First build the project with skipping tests: `-DskipTest=true`
 Depending which calculator you've implemented test it with run a desired test. For `Double` calculator run
 
 ```bash
-mvnw test -Dtest=DoubleCalculatorTest
+./mvnw test -Dtest=DoubleCalculatorTest
 ```
 
 ## Going multi module
@@ -160,10 +175,13 @@ Now, your parent pom controls the other artifacts as submodules, and each submod
 
 
 ### Building from the parent pom
+
 Now, you should be able to run
+
 ```bash
 ./mvnw clean package 
 ```
+
 from the parent pom (`multi-module` folder)
 
 
