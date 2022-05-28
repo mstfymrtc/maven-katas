@@ -2,6 +2,8 @@
 
 In order to run and perform the following exercises, you need to have at least jdk 11 installed.
 
+Clone this repository to complete the exercises.
+
 ## Installing Java
 You can use SDKMAN to install a suitable JDK version
 
