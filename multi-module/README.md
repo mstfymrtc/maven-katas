@@ -115,7 +115,7 @@ And don't forget the tests!
 Run the project with 
 
 ```
-./mvnw clean package
+./mvnw clean install
 ```
 
 ### Test the reference
