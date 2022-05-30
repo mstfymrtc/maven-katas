@@ -2,7 +2,6 @@ package com.example.maven.calculator;
 
 public class IntegerCalculator implements Calculator<Integer> {
 
-
     @Override
     public Integer sum(Integer aInteger, Integer t1) {
         return aInteger + t1;
@@ -19,7 +18,7 @@ public class IntegerCalculator implements Calculator<Integer> {
     }
 
     @Override
-    public Integer quotient(Integer aInteger, Integer t1) {
-        return aInteger / t1;
+    public Double quotient(Integer aInteger, Integer t1) {
+        return aInteger.doubleValue() / t1;
     }
 }
